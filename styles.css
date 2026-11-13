@@ -221,15 +221,12 @@ p + p { margin-top: 1.1em; }
 /* ---------- At a glance ---------- */
 .glance { background: var(--cream); }
 .glance-grid { display: grid; }
-.glance-item { padding-block: 34px; border-bottom: 1px solid var(--line); }
+.glance-item { display: flex; align-items: center; gap: 14px; padding-block: 16px; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 1.45rem; line-height: 1.2; color: var(--ink); }
+.glance-item::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--brass); }
 .glance-item:last-child { border-bottom: 0; }
-.glance-item h2 { font-size: 1.7rem; margin-bottom: 10px; }
-.glance-item p { font-size: 1rem; max-width: 36ch; }
 @media (min-width: 800px) {
-  .glance-grid { grid-template-columns: repeat(3, 1fr); }
-  .glance-item { padding: 56px clamp(20px, 3vw, 44px); border-bottom: 0; border-left: 1px solid var(--line); }
-  .glance-item:first-child { border-left: 0; padding-left: 0; }
-  .glance-item:last-child { padding-right: 0; }
+  .glance-grid { grid-template-columns: repeat(3, auto); justify-content: space-between; }
+  .glance-item { padding-block: 26px; border-bottom: 0; font-size: 1.55rem; }
 }
 
 /* ---------- About ---------- */
@@ -329,7 +326,35 @@ p + p { margin-top: 1.1em; }
 .review figcaption { display: flex; align-items: baseline; gap: 14px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--ink); }
 .review figcaption strong { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--ink); }
 .review figcaption span { font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-@media (min-width: 860px) { .reviews-grid { grid-template-columns: 1fr 1fr; } }
+.review blockquote p + p { margin-top: 1em; }
+
+/* Featured review: wide ink card with a headline line */
+.review.featured { background: var(--ink); border-color: var(--ink); padding-top: clamp(32px, 5vw, 60px); }
+.review-headline {margin-bottom: clamp(26px, 4vw, 44px); padding-bottom: clamp(26px, 4vw, 44px); border-bottom: 1px solid #6B6257; font-family: var(--serif); font-size: clamp(2.1rem, 5.6vw, 4rem); line-height: 1.06; letter-spacing: -0.01em; color: var(--on-ink); text-wrap: balance; }
+.review-headline em { font-weight: 400; }
+.review.featured blockquote p { font-size: clamp(1.2rem, 1.9vw, 1.35rem); color: var(--on-ink-muted); }
+.review.featured figcaption { border-top-color: #6B6257; }
+.review.featured figcaption strong { color: var(--on-ink); }
+.review.featured figcaption span { color: var(--sand); }
+
+/* Small review excerpts placed around the page */
+.aside-quote { max-width: 52ch; margin-top: 32px; padding-left: 22px; border-left: 1px solid var(--brass); }
+.aside-quote blockquote { margin: 0; }
+.aside-quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2vw, 1.45rem); line-height: 1.4; color: var(--ink); }
+.aside-quote figcaption { margin-top: 12px; font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.aside-quote-feature { max-width: 880px; margin-top: clamp(44px, 6vw, 76px); padding-left: clamp(22px, 3vw, 36px); border-left: 2px solid var(--ink); }
+.aside-quote-feature p { font-style: normal; font-size: clamp(1.5rem, 3vw, 2.15rem); line-height: 1.28; text-wrap: balance; }
+.aside-quote-feature figcaption { margin-top: 18px; }
+.quote-pair { display: grid; gap: 32px clamp(32px, 6vw, 88px); margin-top: clamp(48px, 7vw, 88px); }
+.quote-pair .aside-quote { max-width: none; margin-top: 0; }
+@media (min-width: 800px) { .quote-pair { grid-template-columns: 1fr 1fr; } }
+
+@media (min-width: 860px) {
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .review.featured { grid-column: 1 / -1; }
+  .review.featured blockquote { columns: 2; column-gap: clamp(32px, 4vw, 56px); }
+  .review.featured blockquote p { break-inside: avoid; }
+}
 
 /* ---------- Process ---------- */
 .process { background: var(--cream); }
@@ -424,12 +449,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: non
 .footer-brand { font-family: var(--serif); font-size: 2rem; color: var(--on-ink); margin-bottom: 10px; }
 .site-footer h2 { font: 500 .74rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--sand); margin-bottom: 16px; }
 .site-footer a { color: var(--on-ink); text-underline-offset: 5px; text-decoration-thickness: 1px; display: inline-flex; align-items: center; min-height: 44px; }
+.site-footer .social-link { gap: 10px; }
 .site-footer .placeholder { background: transparent; border-color: var(--sand); color: var(--on-ink-muted); font-size: .86rem; margin-top: 8px; }
 .site-footer .placeholder::before { color: var(--sand); }
 .footer-base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 18px; border-top: 1px solid #3B3631; font-size: .84rem; }
 .footer-base p { margin: 0; }
 @media (min-width: 800px) {
-  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
 }
 
 /* ---------- Motion ---------- */
