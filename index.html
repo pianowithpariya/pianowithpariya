@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 
   <script type="application/ld+json">
@@ -117,8 +117,45 @@
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap about-grid">
         <div class="about-media reveal">
-          <div class="portrait">
-            <img src="images/pariya.jpg" width="993" height="1400" loading="lazy" decoding="async" alt="Pariya, piano teacher, smiling at sunset">
+          <div class="portrait-wrap">
+            <div class="portrait">
+              <img src="images/pariya.jpg" width="993" height="1400" loading="lazy" decoding="async" alt="Pariya, piano teacher, smiling at sunset">
+            </div>
+          </div>
+
+          <!-- Tap-through parent reviews -->
+          <div class="quote-slider" id="quote-slider" role="group" aria-roledescription="carousel" aria-label="What parents say">
+            <div class="quote-slides">
+              <figure class="aside-quote quote-slide is-active">
+                <blockquote><p>&ldquo;Pariya&rsquo;s warm and engaging personality makes it especially easy for younger children to connect with her.&rdquo;</p></blockquote>
+                <figcaption>Sana, parent of Tara</figcaption>
+              </figure>
+              <figure class="aside-quote quote-slide">
+                <blockquote><p>&ldquo;I cannot recommend Pariya highly enough! She is an exceptional piano teacher who has a wonderful ability to connect with children, make learning fun, and inspire a genuine love of music.&rdquo;</p></blockquote>
+                <figcaption>Jade, parent of Anwen</figcaption>
+              </figure>
+              <figure class="aside-quote quote-slide">
+                <blockquote><p>&ldquo;She brings so much patience and encouragement to every lesson, creating a positive and supportive environment that has really helped Niki grow in both skill and confidence.&rdquo;</p></blockquote>
+                <figcaption>Fahimeh, parent of Niki</figcaption>
+              </figure>
+              <figure class="aside-quote quote-slide">
+                <blockquote><p>&ldquo;Pariya strikes a remarkable balance between keeping lessons playful and engaging while encouraging impressive progress.&rdquo;</p></blockquote>
+                <figcaption>Jade, parent of Anwen</figcaption>
+              </figure>
+              <figure class="aside-quote quote-slide">
+                <blockquote><p>&ldquo;She is patient, encouraging, responsible, and flexible, and she has helped Tara make tremendous progress while truly enjoying her lessons.&rdquo;</p></blockquote>
+                <figcaption>Sana, parent of Tara</figcaption>
+              </figure>
+            </div>
+            <div class="quote-nav">
+              <button type="button" class="quote-btn" data-dir="-1" aria-label="Previous review">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12H3M10 5l-7 7 7 7"/></svg>
+              </button>
+              <p class="quote-count" aria-hidden="true"><span id="quote-current">1</span> / 5</p>
+              <button type="button" class="quote-btn" data-dir="1" aria-label="Next review">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -137,17 +174,6 @@
             <svg viewBox="0 0 40 24" width="40" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 12h38M28 2l10 10-10 10"/></svg>
           </a>
         </div>
-      </div>
-
-      <div class="wrap quote-pair">
-        <figure class="aside-quote reveal">
-          <blockquote><p>&ldquo;Pariya&rsquo;s warm and engaging personality makes it especially easy for younger children to connect with her.&rdquo;</p></blockquote>
-          <figcaption>Sana, parent of Tara</figcaption>
-        </figure>
-        <figure class="aside-quote reveal">
-          <blockquote><p>&ldquo;I cannot recommend Pariya highly enough! She is an exceptional piano teacher who has a wonderful ability to connect with children, make learning fun, and inspire a genuine love of music.&rdquo;</p></blockquote>
-          <figcaption>Jade, parent of Anwen</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -515,6 +541,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

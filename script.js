@@ -142,6 +142,41 @@
     }
   }
 
+  /* ---------- Tap-through reviews under the portrait ---------- */
+  (function () {
+    var slider = document.getElementById('quote-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.quote-slide');
+    var current = slider.querySelector('#quote-current');
+    var index = 0, timer = null, autoplay = !reduceMotion, paused = false;
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === index);
+        slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+      current.textContent = index + 1;
+    }
+    function byHand(dir) {                       // once a visitor takes over, stop auto-advancing
+      autoplay = false; clearInterval(timer);
+      slider.querySelector('.quote-slides').setAttribute('aria-live', 'polite');
+      show(index + dir);
+    }
+
+    slider.querySelectorAll('.quote-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { byHand(Number(btn.dataset.dir)); });
+    });
+    slider.querySelector('.quote-slides').addEventListener('click', function () { byHand(1); });
+    ['mouseenter', 'focusin'].forEach(function (e) { slider.addEventListener(e, function () { paused = true; }); });
+    ['mouseleave', 'focusout'].forEach(function (e) { slider.addEventListener(e, function () { paused = false; }); });
+
+    show(0);
+    if (autoplay) {
+      timer = setInterval(function () { if (!paused && !document.hidden) show(index + 1); }, 7000);
+    }
+  })();
+
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- Inquiry form ---------- */
